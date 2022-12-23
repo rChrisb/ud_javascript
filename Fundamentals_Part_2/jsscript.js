@@ -141,7 +141,7 @@
 // 	console.log(array[i], array[i].length);
 // }
 
-const bills = [21, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
 const tips = [];
 const totals = [];
 const calctip = function (bill) {
@@ -155,8 +155,11 @@ for (let i = 0; i < 10; i++)
 	totals.push(tips[i] + bills[i])
 }
 console.log(tips, totals)
-let total = 0;
+
+
+
 const calcAverage = function(arr){
+	let total = 0;
 	for (let i = 0; i < arr.length; i++)
 	{
 		total += arr[i] 
@@ -164,4 +167,5 @@ const calcAverage = function(arr){
 	const avg = total/arr.length;
 	return avg
 }
-console.log(calcAverage(bills))
+console.log(calcAverage(totals))
+console.log(calcAverage(tips))
