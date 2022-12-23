@@ -89,8 +89,19 @@
 const jonas = {
 	name : 'Jonas',
 	friends: ["Mike", "Peter", "Steven"],
-	job: "teacher"
-}
+	job: "teacher",
+	birthYear: 1997,
+	/* hasDriversLicence: true, */
+	calcAge: function () {
+		this.age = 2037 - this.birthYear;
+		return this.age;
+	},
+	getSummary: function () {
+		if (this.hasDriversLicence) console.log(`${this.name} is a ${this.calcAge()}-year old ${this.job}, and he has a driver's lincence`)
+	else console.log(`${this.name} is a ${this.calcAge()}-year old ${this.job}, and he has NOT a driver's lincence`)
+	}
 
-console.log(`${jonas.name} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`)
+};
+jonas.getSummary();
+// console.log(`${jonas.name} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`)
 
