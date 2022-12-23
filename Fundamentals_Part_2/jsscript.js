@@ -38,20 +38,59 @@
 
 
 
-const calcAverage =(score1, score2, score3) =>
-{
-	return (score1+score2+score3)/3
+// const calcAverage =(score1, score2, score3) =>
+// {
+// 	return (score1+score2+score3)/3
+// }
+// // console.log(calcAverage(1, 8, 3))
+// const D_score = calcAverage(85, 54, 41), K_score = calcAverage(23, 34, 27);
+// const checkwinner = (firstteamscore, secondteamscore) =>
+// {
+// 	if (firstteamscore >= secondteamscore*2)
+// 	{
+// 		console.log(`The winners are the Dauplhins (${firstteamscore} vs ${secondteamscore})!!`)
+// 	} else if (secondteamscore >= firstteamscore*2)
+// 	{
+// 		console.log(`The winners are the Koalas (${secondteamscore} vs ${firstteamscore})!!`)
+// 	} else {console.log("There are no winner")}
+// }
+// checkwinner(D_score, K_score);
+
+// const lastchamps = ['argentina', 'france', 'germany', 'spain'];
+// // console.log(lastchamps[3])
+// // console.log(lastchamps.length)
+// // console.log(lastchamps[lastchamps.length - 3])
+// // lastchamps[5] = 'italy'
+// // console.log(lastchamps, lastchamps[4])
+// lastchamps.push('ITALY')
+// // lastchamps.unshift('we will see')
+// lastchamps.pop(); // remove last element of an array
+// lastchamps.shift(); // remove first element of an array
+// console.log(lastchamps)
+// console.log(lastchamps.indexOf('france'))
+// console.log(lastchamps.includes('cameroon'), lastchamps.includes('spain')) // includes method returns true or false
+// if (!lastchamps.includes('cameroon'))
+// console.log('Cameroon did NOT win any of the last WC')
+
+// const calctip = bill =>
+// {if (bill <= 300 && bill >= 50){
+// 	bill = bill * 0.15;
+// } else {
+// 	bill = bill * 0.2;
+// } return bill;
+// }
+// const bills = [125, 555, 44];
+// console.log(bills)
+// const tips = [calctip(bills[0]), calctip(bills[1]), calctip(bills[2])]
+// console.log(tips)
+// const total = [tips[0]+bills[0], tips[1]+bills[1], tips[2]+bills[2]]
+// console.log(total)
+
+const jonas = {
+	name : 'Jonas',
+	friends: ["Mike", "Peter", "Steven"],
+	job: "teacher"
 }
-// console.log(calcAverage(1, 8, 3))
-const D_score = calcAverage(85, 54, 41), K_score = calcAverage(23, 34, 27);
-const checkwinner = (firstteamscore, secondteamscore) =>
-{
-	if (firstteamscore >= secondteamscore*2)
-	{
-		console.log(`The winners are the Dauplhins (${firstteamscore} vs ${secondteamscore})!!`)
-	} else if (secondteamscore >= firstteamscore*2)
-	{
-		console.log(`The winners are the Koalas (${secondteamscore} vs ${firstteamscore})!!`)
-	} else {console.log("There are no winner")}
-}
-checkwinner(D_score, K_score);
+
+console.log(`${jonas.name} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`)
+
