@@ -86,22 +86,44 @@
 // const total = [tips[0]+bills[0], tips[1]+bills[1], tips[2]+bills[2]]
 // console.log(total)
 
-const jonas = {
-	name : 'Jonas',
-	friends: ["Mike", "Peter", "Steven"],
-	job: "teacher",
-	birthYear: 1997,
-	/* hasDriversLicence: true, */
-	calcAge: function () {
-		this.age = 2037 - this.birthYear;
-		return this.age;
-	},
-	getSummary: function () {
-		if (this.hasDriversLicence) console.log(`${this.name} is a ${this.calcAge()}-year old ${this.job}, and he has a driver's lincence`)
-	else console.log(`${this.name} is a ${this.calcAge()}-year old ${this.job}, and he has NOT a driver's lincence`)
-	}
+// const jonas = {
+// 	name : 'Jonas',
+// 	friends: ["Mike", "Peter", "Steven"],
+// 	job: "teacher",
+// 	birthYear: 1997,
+// 	/* hasDriversLicence: true, */
+// 	calcAge: function () {
+// 		this.age = 2037 - this.birthYear;
+// 		return this.age;
+// 	},
+// 	getSummary: function () {
+// 		if (this.hasDriversLicence) console.log(`${this.name} is a ${this.calcAge()}-year old ${this.job}, and he has a driver's lincence`)
+// 	else console.log(`${this.name} is a ${this.calcAge()}-year old ${this.job}, and he has NOT a driver's lincence`)
+// 	}
 
-};
-jonas.getSummary();
+// };
+// jonas.getSummary();
 // console.log(`${jonas.name} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`)
 
+const mark = {
+	name: "Mark",
+	weight: 78,
+	height: 1.69,
+	claclBMI: function () {
+		return this.weight/this.height**2;
+	}
+}
+const BMImark = mark.claclBMI();
+
+const john = {
+	name: "John",
+	weight: 92,
+	height: 1.95,
+	claclBMI: function () {
+		return this.weight/this.height**2;
+	}
+}
+const BMIjohn = john.claclBMI();
+
+console.log(BMIjohn > BMImark ? `John's BMI is the higher one (${BMIjohn} vs ${BMImark})
+` : `Mark's BMI is the higher one (${BMImark} vs ${BMIjohn})`)
