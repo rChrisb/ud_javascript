@@ -106,7 +106,7 @@
 // console.log(`${jonas.name} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`)
 
 const mark = {
-	name: "Mark",
+	name: "messi",
 	weight: 78,
 	height: 1.69,
 	claclBMI: function () {
@@ -116,7 +116,7 @@ const mark = {
 const BMImark = mark.claclBMI();
 
 const john = {
-	name: "John",
+	name: "neymar",
 	weight: 92,
 	height: 1.95,
 	claclBMI: function () {
@@ -125,5 +125,5 @@ const john = {
 }
 const BMIjohn = john.claclBMI();
 
-console.log(BMIjohn > BMImark ? `John's BMI is the higher one (${BMIjohn} vs ${BMImark})
-` : `Mark's BMI is the higher one (${BMImark} vs ${BMIjohn})`)
+console.log(BMIjohn > BMImark ? `${john.name}'s BMI is higher than ${mark.name}'s (${BMIjohn} vs ${BMImark})
+` : `${mark.name}'s BMI is higher than ${john.name}'s (${BMImark} vs ${BMIjohn})`)
