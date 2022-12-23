@@ -105,25 +105,63 @@
 // jonas.getSummary();
 // console.log(`${jonas.name} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`)
 
-const mark = {
-	name: "messi",
-	weight: 78,
-	height: 1.69,
-	claclBMI: function () {
-		return this.weight/this.height**2;
-	}
-}
-const BMImark = mark.claclBMI();
+// const mark = {
+// 	name: "messi",
+// 	weight: 78,
+// 	height: 1.69,
+// 	claclBMI: function () {
+// 		return this.weight/this.height**2;
+// 	}
+// }
+// const BMImark = mark.claclBMI();
 
-const john = {
-	name: "neymar",
-	weight: 92,
-	height: 1.95,
-	claclBMI: function () {
-		return this.weight/this.height**2;
-	}
-}
-const BMIjohn = john.claclBMI();
+// const john = {
+// 	name: "neymar",
+// 	weight: 92,
+// 	height: 1.95,
+// 	claclBMI: function () {
+// 		return this.weight/this.height**2;
+// 	}
+// }
+// const BMIjohn = john.claclBMI();
 
-console.log(BMIjohn > BMImark ? `${john.name}'s BMI is higher than ${mark.name}'s (${BMIjohn} vs ${BMImark})
-` : `${mark.name}'s BMI is higher than ${john.name}'s (${BMImark} vs ${BMIjohn})`)
+// console.log(BMIjohn > BMImark ? `${john.name}'s BMI is higher than ${mark.name}'s (${BMIjohn} vs ${BMImark})
+// ` : `${mark.name}'s BMI is higher than ${john.name}'s (${BMImark} vs ${BMIjohn})`)
+// const arr = [];
+// const array = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
+// for (let i = 0; i < array.length ;i++)
+// {
+// 	if (array[i].length !== 5) continue
+// 	console.log(array[i], array[i].length);
+// 	arr.push(array[i].length)
+// }
+// console.log(arr);
+// for (let i = array.length - 1; i >= 0; i--)
+// {
+// 	console.log(array[i], array[i].length);
+// }
+
+const bills = [21, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+const calctip = function (bill) {
+	if (bill <= 300 && bill >= 50) bill = bill * 0.15;
+	else bill = bill * 0.2;
+	return bill;
+}
+for (let i = 0; i < 10; i++)
+{
+	tips.push(calctip(bills[i]))
+	totals.push(tips[i] + bills[i])
+}
+console.log(tips, totals)
+let total = 0;
+const calcAverage = function(arr){
+	for (let i = 0; i < arr.length; i++)
+	{
+		total += arr[i] 
+	}
+	const avg = total/arr.length;
+	return avg
+}
+console.log(calcAverage(bills))
