@@ -66,3 +66,36 @@
 // };
 // const Amp2 = calcAmplitudeNew(temp2, temp, temp3);
 // console.log(`The amplitude is ${Amp2}`);
+
+// const array = [17, 21, 23];
+// const arrrray = [12, 5, -5, 0, 4];
+
+// const printForecast = function (arr) {
+//   let ray = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     ray.push(`${arr[i]}°C in ${i + 1} days ... `);
+//   }
+//   const str = ray.join("");
+//   console.log(`... ${str}`);
+// };
+
+// printForecast(array);
+// printForecast(arrrray);
+
+// let ray = [];
+// ray.push(`${array[0]} ok ${array[1]}`);
+// console.log(ray);
+const array = [17, 21, 23];
+const arrrray = [12, 5, -5, 0, 4];
+
+const printForecast = function (arr) {
+  let ray = "";
+  for (let i = 0; i < arr.length; i++) {
+    ray += `${arr[i]}°C in ${i + 1} days ... `;
+  }
+  /* const str = ray.join(""); */
+  console.log(`... ${ray}`);
+};
+
+printForecast(array);
+printForecast(arrrray);
