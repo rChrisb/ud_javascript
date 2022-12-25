@@ -30,8 +30,10 @@ buttonRoll.addEventListener("click", function () {
   // 3. Check for rolled 1
   if (dice !== 1) {
     currentScore += dice;
-    document.getElementById(`current--${active_player}`) = currentScore;
+    document.getElementById(`current--${active_player}`).textContent =
+      currentScore;
   } else {
     // Switch to next player
+    active_player = active_player === 0 ? 1 : 0;
   }
 });
