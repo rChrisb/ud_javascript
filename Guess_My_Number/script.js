@@ -2,18 +2,20 @@
 
 // document.querySelector(".guess").value = "22";
 
-const secret = Math.trunc(Math.random() * 20) + 1;
+const secret = Math.trunc(Math.random() * 20) + 1; // random num between 0 & 20
 let score = 20;
-document.querySelector(".number").textContent = secret; // random num between 0 & 20
+document.querySelector(".number").textContent = secret;
 
 document.querySelector(".check").addEventListener("click", function () {
   const guess = Number(document.querySelector(".guess").value);
   console.log(guess);
 
   //when no answer
-  if (!guess)
+  if (!guess) {
     document.querySelector(".message").textContent =
       "You have to type a guess number!";
+  }
+
   //when right answer
   else if (guess === secret) {
     document.querySelector(".message").textContent = "CONGRATULATIONS";
