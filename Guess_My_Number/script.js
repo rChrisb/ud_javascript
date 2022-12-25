@@ -47,24 +47,11 @@ document.querySelector(".check").addEventListener("click", function () {
       document.querySelector(".highscore").textContent = highscore;
     }
   }
-  //when answer is too low
-  else if (guess < secret) {
-    /* document.querySelector(".guess").value = ""; */
+  // when wrong answer
+  else if (guess !== secret) {
     if (score > 1) {
-      document.querySelector(".message").textContent = "Your guess is too low";
-      score--;
-      document.querySelector(".score").textContent = score;
-    } else {
       document.querySelector(".message").textContent =
-        "You lost bro! it's OVER";
-      document.querySelector(".score").textContent = 0;
-    }
-
-    //when answer is too high
-  } else if (guess > secret) {
-    /* document.querySelector(".guess").value = ""; */
-    if (score > 1) {
-      document.querySelector(".message").textContent = "Your guess is too high";
+        guess < secret ? "Your guess is too low" : "Your guess is too high";
       score--;
       document.querySelector(".score").textContent = score;
     } else {
@@ -73,4 +60,30 @@ document.querySelector(".check").addEventListener("click", function () {
       document.querySelector(".score").textContent = 0;
     }
   }
+  /*  //when answer is too low
+  else if (guess < secret) {
+    /* document.querySelector(".guess").value = ""; */
+  // if (score > 1) {
+  //   document.querySelector(".message").textContent = "Your guess is too low";
+  //   score--;
+  //   document.querySelector(".score").textContent = score;
+  // } else {
+  //   document.querySelector(".message").textContent =
+  //     "You lost bro! it's OVER";
+  //   document.querySelector(".score").textContent = 0;
+  // }
+
+  //   //when answer is too high
+  // } else if (guess > secret) {
+  //   /* document.querySelector(".guess").value = ""; */
+  //   if (score > 1) {
+  //     document.querySelector(".message").textContent = "Your guess is too high";
+  //     score--;
+  //     document.querySelector(".score").textContent = score;
+  //   } else {
+  //     document.querySelector(".message").textContent =
+  //       "You lost bro! it's OVER";
+  //     document.querySelector(".score").textContent = 0;
+  //   }
+  // }
 });
