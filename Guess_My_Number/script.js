@@ -18,8 +18,12 @@ document.querySelector(".check").addEventListener("click", function () {
 
   //when right answer
   else if (guess === secret) {
-    document.querySelector(".message").textContent = "CONGRATULATIONS";
+    document.querySelector(".message").textContent = "CONGRATULATIONS !!";
+    document.querySelector(".message").style.color = "yellow";
     document.querySelector("body").style.backgroundColor = "#60b347";
+    document.querySelector(".number").style.width = "30rem";
+    document.querySelector(".number").style.fontSize = "8rem";
+    document.querySelector(".number").style.backgroundColor = "yellow";
   }
   //when answer is too low
   else if (guess < secret) {
