@@ -37,3 +37,4 @@ const me = {
 
 const you = Object.assign({}, me);
 you.age = 40;
+console.log(you, me);
