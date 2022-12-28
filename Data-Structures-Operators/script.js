@@ -41,11 +41,26 @@
 // const x = [24, 26, 50];
 // add(...x);
 
-console.log(1 ?? "ok");
-console.log(0 || "ok");
-console.log(0 || false || "okay");
-console.log(false || null || undefined);
-console.log(null ?? null ?? undefined ?? 45);
+// console.log(1 ?? "ok");
+// console.log(0 || "ok");
+// console.log(0 || false || "okay");
+// console.log(false || null || undefined);
+// console.log(null ?? null ?? undefined ?? 45);
 
-console.log(1 && 5 && 10);
-console.log("ok" && true && false && 12);
+// console.log(1 && 5 && 10);
+// console.log("ok" && true && false && 12);
+
+const rest1 = {
+  name: "One",
+  numGuests: 0,
+};
+const rest2 = {
+  name: "Two",
+  owner: "Christiano",
+};
+
+// rest1.numGuests = rest1.numGuests || 12;
+// rest2.numGuests = rest2.numGuests || 12;
+rest2.numGuests ||= 15;
+rest1.numGuests ??= 15;
+console.log(rest1, rest2);
