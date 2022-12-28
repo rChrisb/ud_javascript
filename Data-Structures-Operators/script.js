@@ -116,26 +116,28 @@ console.log(fieldPlayers);
 const allPlayers = [...players1, ...players2];
 console.log(allPlayers);
 
-const playersFinal = [...players1, "Thiago", "Coutinho", "Perisic"];
-console.log(playersFinal);
+// const playersFinal = [...players1, "Thiago", "Coutinho", "Perisic"];
+// console.log(playersFinal);
 
-// const team1 = game.odds.team1;
-// const team2 = game.odds.team2;
-// const draw = game.odds.x;
-const {
-  odds: { team1, x: draw, team2 },
-} = game;
-console.log(team1, draw, team2);
+// // const team1 = game.odds.team1;
+// // const team2 = game.odds.team2;
+// // const draw = game.odds.x;
+// const {
+//   odds: { team1, x: draw, team2 },
+// } = game;
+// console.log(team1, draw, team2);
 
-const printGoals = function (...num) {
-  let i;
-  for (i = 0; i < num.length; i++) {
-    console.log(num[i]);
-  }
-  console.log(i);
-};
-printGoals("Davies", "Muller", "Lewandoski", "Kimmich");
-printGoals(...game.scored);
+// const printGoals = function (...num) {
+//   let i;
+//   for (i = 0; i < num.length; i++) {
+//     console.log(num[i]);
+//   }
+//   console.log(i);
+// };
+// printGoals("Davies", "Muller", "Lewandoski", "Kimmich");
+// printGoals(...game.scored);
 
-team1 < team2 && console.log(`${game.team1} is more likely to win`);
-team1 > team2 && console.log(`${game.team2} is more likely to win`);
+// team1 < team2 && console.log(`${game.team1} is more likely to win`);
+// team1 > team2 && console.log(`${game.team2} is more likely to win`);
+
+for (const player of players2.entries()) console.log(player);
