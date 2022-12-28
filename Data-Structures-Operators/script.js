@@ -52,7 +52,7 @@
 
 const rest1 = {
   name: "One",
-  numGuests: 0,
+  numGuests: 5,
 };
 const rest2 = {
   name: "Two",
@@ -62,5 +62,5 @@ const rest2 = {
 // rest1.numGuests = rest1.numGuests || 12;
 // rest2.numGuests = rest2.numGuests || 12;
 rest2.numGuests ||= 15;
-rest1.numGuests ??= 15;
+rest1.numGuests &&= 0;
 console.log(rest1, rest2);
