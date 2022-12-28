@@ -41,8 +41,11 @@
 // const x = [24, 26, 50];
 // add(...x);
 
-console.log(1 || "ok");
+console.log(1 ?? "ok");
 console.log(0 || "ok");
 console.log(0 || false || "okay");
 console.log(false || null || undefined);
-console.log(false || null || undefined || 45);
+console.log(null ?? null ?? undefined ?? 45);
+
+console.log(1 && 5 && 10);
+console.log("ok" && true && false && 12);
