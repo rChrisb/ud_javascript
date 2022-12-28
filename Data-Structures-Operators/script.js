@@ -140,5 +140,7 @@ console.log(allPlayers);
 // team1 < team2 && console.log(`${game.team1} is more likely to win`);
 // team1 > team2 && console.log(`${game.team2} is more likely to win`);
 
-for (const [i, player] of players2.entries())
-  console.log(`${i + 1}: ${player}`);
+// for (const [i, player] of players2.entries())
+//   console.log(`${i + 1}: ${player}`);
+
+for (const elements of Object.keys(game)) console.log(elements);
