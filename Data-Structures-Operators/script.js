@@ -144,3 +144,7 @@ console.log(allPlayers);
 //   console.log(`${i + 1}: ${player}`);
 
 for (const elements of Object.keys(game)) console.log(elements);
+
+for (const value of Object.values(game)) console.log(value);
+
+for (const entries of Object.entries(game)) console.log(entries);
