@@ -29,14 +29,20 @@
 // console.log(z, others, arra);
 // console.log([...others, ...arra]);
 
-const add = function (...numbers) {
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
-  console.log(sum);
-};
-add(2, 4);
-add(2, 8, 12);
-add(20, 100, 12, 180, 13);
+// const add = function (...numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+//   console.log(sum);
+// };
+// add(2, 4);
+// add(2, 8, 12);
+// add(20, 100, 12, 180, 13);
 
-const x = [24, 26, 50];
-add(...x);
+// const x = [24, 26, 50];
+// add(...x);
+
+console.log(1 || "ok");
+console.log(0 || "ok");
+console.log(0 || false || "okay");
+console.log(false || null || undefined);
+console.log(false || null || undefined || 45);
