@@ -50,17 +50,92 @@
 // console.log(1 && 5 && 10);
 // console.log("ok" && true && false && 12);
 
-const rest1 = {
-  name: "One",
-  numGuests: 5,
-};
-const rest2 = {
-  name: "Two",
-  owner: "Christiano",
+// const rest1 = {
+//   name: "One",
+//   numGuests: 5,
+// };
+// const rest2 = {
+//   name: "Two",
+//   owner: "Christiano",
+// };
+
+// // rest1.numGuests = rest1.numGuests || 12;
+// // rest2.numGuests = rest2.numGuests || 12;
+// rest2.numGuests ||= 15;
+// rest1.numGuests &&= 0;
+// console.log(rest1, rest2);
+
+const game = {
+  team1: "Bayern Munich",
+  team2: "Borrussia Dortmund",
+  players: [
+    [
+      "Neuer",
+      "Pavard",
+      "Martinez",
+      "Alaba",
+      "Davies",
+      "Kimmich",
+      "Goretzka",
+      "Coman",
+      "Muller",
+      "Gnarby",
+      "Lewandowski",
+    ],
+    [
+      "Burki",
+      "Schulz",
+      "Hummels",
+      "Akanji",
+      "Hakimi",
+      "Weigl",
+      "Witsel",
+      "Hazard",
+      "Brandt",
+      "Sancho",
+      "Gotze",
+    ],
+  ],
+  score: "4:0",
+  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+  date: "Nov 9th, 2037",
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
 };
 
-// rest1.numGuests = rest1.numGuests || 12;
-// rest2.numGuests = rest2.numGuests || 12;
-rest2.numGuests ||= 15;
-rest1.numGuests &&= 0;
-console.log(rest1, rest2);
+const [players1, players2] = game.players;
+console.log(players1);
+console.log(players2);
+
+const [gk, ...fieldPlayers] = players1;
+console.log(fieldPlayers);
+
+const allPlayers = [...players1, ...players2];
+console.log(allPlayers);
+
+const playersFinal = [...players1, "Thiago", "Coutinho", "Perisic"];
+console.log(playersFinal);
+
+// const team1 = game.odds.team1;
+// const team2 = game.odds.team2;
+// const draw = game.odds.x;
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
+console.log(team1, draw, team2);
+
+const printGoals = function (...num) {
+  let i;
+  for (i = 0; i < num.length; i++) {
+    console.log(num[i]);
+  }
+  console.log(i);
+};
+printGoals("Davies", "Muller", "Lewandoski", "Kimmich");
+printGoals(...game.scored);
+
+team1 < team2 && console.log(`${game.team1} is more likely to win`);
+team1 > team2 && console.log(`${game.team2} is more likely to win`);
