@@ -186,5 +186,7 @@ console.log(people.has("ko"));
 console.log(people);
 
 const arr = [1, 2, 22, 2, 3, 3, 3];
-const array = new Set(arr);
-console.log(arr, array);
+const set = new Set(arr);
+console.log(arr, set);
+const array = [...set];
+console.log(array);
