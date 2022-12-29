@@ -219,10 +219,12 @@ gameEvents.delete(64);
 console.log(gameEvents);
 
 console.log(
-  `An event happened, on average, every ${90 / gameEvents.size} minutes`
+  `An event happened, on average, every ${Math.trunc(
+    92 / gameEvents.size
+  )} minutes`
 );
 
-for (const [min, eve] of gameEvents.entries()) {
+for (const [min, eve] of gameEvents) {
   console.log(
     min <= 45 ? `[FIRST HALF] ${min}: ${eve}` : `[SECOND HALF] ${min}: ${eve}`
   );
