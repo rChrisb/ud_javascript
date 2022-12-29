@@ -210,22 +210,31 @@ const gameEvents = new Map([
   [92, "🔶 Yellow card"],
 ]);
 
-const [...events] = new Set(gameEvents.values());
-console.log(events);
-const events1 = [...new Set(gameEvents.values())];
-console.log(events1);
+// const [...events] = new Set(gameEvents.values());
+// console.log(events);
+// const events1 = [...new Set(gameEvents.values())];
+// console.log(events1);
 
-gameEvents.delete(64);
-console.log(gameEvents);
+// gameEvents.delete(64);
+// console.log(gameEvents);
 
-console.log(
-  `An event happened, on average, every ${Math.trunc(
-    92 / gameEvents.size
-  )} minutes`
-);
+// console.log(
+//   `An event happened, on average, every ${Math.trunc(
+//     92 / gameEvents.size
+//   )} minutes`
+// );
 
-for (const [min, eve] of gameEvents) {
-  console.log(
-    min <= 45 ? `[FIRST HALF] ${min}: ${eve}` : `[SECOND HALF] ${min}: ${eve}`
-  );
-}
+// for (const [min, eve] of gameEvents) {
+//   console.log(
+//     min <= 45 ? `[FIRST HALF] ${min}: ${eve}` : `[SECOND HALF] ${min}: ${eve}`
+//   );
+// }
+
+const airline = "TAP Air Portugal",
+  plane = "A320";
+
+console.log(airline.indexOf("P"));
+console.log(airline.lastIndexOf("P"));
+console.log(airline.indexOf("Portugal"));
+
+console.log(airline.slice("8"));
