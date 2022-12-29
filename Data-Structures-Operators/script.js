@@ -106,15 +106,15 @@ const game = {
   },
 };
 
-const [players1, players2] = game.players;
-console.log(players1);
-console.log(players2);
+// const [players1, players2] = game.players;
+// console.log(players1);
+// console.log(players2);
 
-const [gk, ...fieldPlayers] = players1;
-console.log(fieldPlayers);
+// const [gk, ...fieldPlayers] = players1;
+// console.log(fieldPlayers);
 
-const allPlayers = [...players1, ...players2];
-console.log(allPlayers);
+// const allPlayers = [...players1, ...players2];
+// console.log(allPlayers);
 
 // const playersFinal = [...players1, "Thiago", "Coutinho", "Perisic"];
 // console.log(playersFinal);
@@ -143,8 +143,34 @@ console.log(allPlayers);
 // for (const [i, player] of players2.entries())
 //   console.log(`${i + 1}: ${player}`);
 
-for (const elements of Object.keys(game)) console.log(elements);
+// for (const elements of Object.keys(game)) console.log(elements);
 
-for (const value of Object.values(game)) console.log(value);
+// for (const value of Object.values(game)) console.log(value);
 
-for (const entries of Object.entries(game)) console.log(entries);
+// for (const entries of Object.entries(game)) console.log(entries);
+
+for (let i = 0; i < game.scored.length; i++)
+  console.log(`Goal ${i + 1}: ${game.scored[i]}`);
+for (const [i, player] of game.scored.entries())
+  console.log(`Goal ${i + 1}: ${player}`);
+
+let oddsum = 0;
+const values = Object.values(game.odds);
+for (const odd of values) {
+  oddsum += odd;
+}
+const avg = oddsum / values.length;
+console.log("Average odd is " + avg);
+
+const entries = Object.entries(game.odds);
+for (const [team, odd] of entries) {
+  console.log(
+    team !== "x"
+      ? `Odd of victory ${game[team]}: ${odd}`
+      : `Odd of draw: ${odd}`
+  );
+}
+console.log(Object.entries(game.odds));
+
+const arr = ["chris", "rubie", "bikoy"];
+console.log(arr.entries());
