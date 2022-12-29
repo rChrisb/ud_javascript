@@ -176,7 +176,15 @@ const game = {
 // console.log(arr.entries());
 
 const people = new Set(["rubie", "chris", "bikoy", "rubie", "chris"]);
-console.log(people);
 
 console.log(new Set("ikiiko"));
 console.log(people.size);
+people.delete("bikoy");
+people.add("lamperouge");
+console.log(people.has("rubie"));
+console.log(people.has("ko"));
+console.log(people);
+
+const arr = [1, 2, 22, 2, 3, 3, 3];
+const array = new Set(arr);
+console.log(arr, array);
