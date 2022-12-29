@@ -238,3 +238,6 @@ console.log(airline.lastIndexOf("P"));
 console.log(airline.indexOf("Portugal"));
 
 console.log(airline.slice("8"));
+console.log(airline.slice(8, 10).length);
+console.log(airline.slice(airline.lastIndexOf(" "), airline.length));
+console.log(airline.slice(airline.lastIndexOf(" ") + 1));
