@@ -175,23 +175,37 @@ const game = {
 // const arr = ["chris", "rubie", "bikoy"];
 // console.log(arr.entries());
 
-const people = new Set(["rubie", "chris", "bikoy", "rubie", "chris"]);
+// const people = new Set(["rubie", "chris", "bikoy", "rubie", "chris"]);
 
-console.log(new Set("ikiiko"));
-console.log(people.size);
-people.delete("bikoy");
-people.add("lamperouge");
-console.log(people.has("rubie"));
-console.log(people.has("ko"));
-console.log(people);
+// console.log(new Set("ikiiko"));
+// console.log(people.size);
+// people.delete("bikoy");
+// people.add("lamperouge");
+// console.log(people.has("rubie"));
+// console.log(people.has("ko"));
+// console.log(people);
 
-const arr = [1, 2, 22, 2, 3, 3, 3];
-const set = new Set(arr);
-console.log(arr, set);
-const array = [...set];
-console.log(array);
+// const arr = [1, 2, 22, 2, 3, 3, 3];
+// const set = new Set(arr);
+// console.log(arr, set);
+// const array = [...set];
+// console.log(array);
 
-const mappp = new Map();
-mappp.set("time", "six");
-console.log(mappp.set("meteo", "10 °C").set("ok", 10));
-console.log(mappp.get("time"));
+// const mappp = new Map();
+// mappp.set("time", "six");
+// console.log(mappp.set("meteo", "10 °C").set("ok", 10));
+// console.log(mappp.get("time"));
+
+const gameEvents = new Map([
+  [17, "⚽️ GOAL"],
+  [36, "🔁 Substitution"],
+  [47, "⚽️ GOAL"],
+  [61, "🔁 Substitution"],
+  [64, "🔶 Yellow card"],
+  [69, "🔴 Red card"],
+  [70, "🔁 Substitution"],
+  [72, "🔁 Substitution"],
+  [76, "⚽️ GOAL"],
+  [80, "⚽️ GOAL"],
+  [92, "🔶 Yellow card"],
+]);
