@@ -190,3 +190,8 @@ const set = new Set(arr);
 console.log(arr, set);
 const array = [...set];
 console.log(array);
+
+const mappp = new Map();
+mappp.set("time", "six");
+console.log(mappp.set("meteo", "10 °C").set("ok", 10));
+console.log(mappp.get("time"));
