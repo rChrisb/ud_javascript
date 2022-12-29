@@ -212,6 +212,8 @@ const gameEvents = new Map([
 
 const [...events] = new Set(gameEvents.values());
 console.log(events);
+const events1 = [...new Set(gameEvents.values())];
+console.log(events1);
 
 gameEvents.delete(64);
 console.log(gameEvents);
@@ -222,6 +224,6 @@ console.log(
 
 for (const [min, eve] of gameEvents.entries()) {
   console.log(
-    min < 45 ? `[FIRST HALF] ${min}: ${eve}` : `[SECOND HALF] ${min}: ${eve}`
+    min <= 45 ? `[FIRST HALF] ${min}: ${eve}` : `[SECOND HALF] ${min}: ${eve}`
   );
 }
