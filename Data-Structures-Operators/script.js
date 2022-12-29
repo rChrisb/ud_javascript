@@ -240,4 +240,18 @@ console.log(airline.indexOf("Portugal"));
 console.log(airline.slice("8"));
 console.log(airline.slice(8, 10).length);
 console.log(airline.slice(airline.lastIndexOf(" "), airline.length));
+console.log(
+  airline.slice(airline.lastIndexOf(" "), airline.length).toUpperCase()
+);
 console.log(airline.slice(airline.lastIndexOf(" ") + 1));
+console.log(airline.slice(-1));
+
+let ok = "nOtOk";
+ok = ok.toUpperCase();
+const tmp = ok.slice(1).toLowerCase();
+ok = ok[0] + tmp;
+console.log(ok);
+ok = "    ekjdke,YFEZJBFENNFREjdkejde  \n\n";
+console.log(ok);
+const okCorrect = ok.trim().toLowerCase();
+console.log(okCorrect);
