@@ -255,3 +255,22 @@ ok = "    ekjdke,YFEZJBFENNFREjdkejde  \n\n";
 console.log(ok);
 const okCorrect = ok.trim().toLowerCase();
 console.log(okCorrect);
+
+const annoucement = "Hello my friend, how are you? ";
+console.log(
+  annoucement.replace("Hello", "Good afternoon").replace("?", " doing today?")
+);
+
+console.log(annoucement.startsWith("Z"));
+console.log(annoucement.endsWith("?"));
+console.log(annoucement.includes("Hello"));
+console.log(annoucement.split(" "));
+
+const word = "coucou";
+console.log(word.replace(word[0], word[0].toUpperCase()));
+
+const num = 123456789;
+const hide = String(num).slice(-4);
+console.log(hide.padStart(String(num).length, "+"));
+
+console.log(annoucement.repeat(3));
