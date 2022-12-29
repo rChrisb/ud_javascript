@@ -179,3 +179,4 @@ const people = new Set(["rubie", "chris", "bikoy", "rubie", "chris"]);
 console.log(people);
 
 console.log(new Set("ikiiko"));
+console.log(people.size);
