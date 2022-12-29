@@ -175,5 +175,7 @@ const game = {
 // const arr = ["chris", "rubie", "bikoy"];
 // console.log(arr.entries());
 
-const peope = new Set(["rubie", "chris", "bikoy", "rubie", "chris"]);
-console.log(peope);
+const people = new Set(["rubie", "chris", "bikoy", "rubie", "chris"]);
+console.log(people);
+
+console.log(new Set("ikiiko"));
