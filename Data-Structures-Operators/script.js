@@ -149,28 +149,31 @@ const game = {
 
 // for (const entries of Object.entries(game)) console.log(entries);
 
-for (let i = 0; i < game.scored.length; i++)
-  console.log(`Goal ${i + 1}: ${game.scored[i]}`);
-for (const [i, player] of game.scored.entries())
-  console.log(`Goal ${i + 1}: ${player}`);
+// for (let i = 0; i < game.scored.length; i++)
+//   console.log(`Goal ${i + 1}: ${game.scored[i]}`);
+// for (const [i, player] of game.scored.entries())
+//   console.log(`Goal ${i + 1}: ${player}`);
 
-let oddsum = 0;
-const values = Object.values(game.odds);
-for (const odd of values) {
-  oddsum += odd;
-}
-const avg = oddsum / values.length;
-console.log("Average odd is " + avg);
+// let oddsum = 0;
+// const values = Object.values(game.odds);
+// for (const odd of values) {
+//   oddsum += odd;
+// }
+// const avg = oddsum / values.length;
+// console.log("Average odd is " + avg);
 
-const entries = Object.entries(game.odds);
-for (const [team, odd] of entries) {
-  console.log(
-    team !== "x"
-      ? `Odd of victory ${game[team]}: ${odd}`
-      : `Odd of draw: ${odd}`
-  );
-}
-console.log(Object.entries(game.odds));
+// const entries = Object.entries(game.odds);
+// for (const [team, odd] of entries) {
+//   console.log(
+//     team !== "x"
+//       ? `Odd of victory ${game[team]}: ${odd}`
+//       : `Odd of draw: ${odd}`
+//   );
+// }
+// console.log(Object.entries(game.odds));
 
-const arr = ["chris", "rubie", "bikoy"];
-console.log(arr.entries());
+// const arr = ["chris", "rubie", "bikoy"];
+// console.log(arr.entries());
+
+const peope = new Set(["rubie", "chris", "bikoy", "rubie", "chris"]);
+console.log(peope);
