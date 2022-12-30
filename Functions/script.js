@@ -44,31 +44,75 @@
 
 // greet("Bonsoir")("Chris");
 
-const lufthansa = {
-  airLine: "Lufthansa",
-  iataCode: "LH",
-  bookings: [],
-  book(flightNum, name) {
-    console.log(
-      `${name} booked a seat on ${this.airLine} flight ${this.iataCode}${flightNum}`
+// const lufthansa = {
+//   airLine: "Lufthansa",
+//   iataCode: "LH",
+//   bookings: [],
+//   book(flightNum, name) {
+//     console.log(
+//       `${name} booked a seat on ${this.airLine} flight ${this.iataCode}${flightNum}`
+//     );
+//     this.bookings.push({ flight: `${this.iataCode}${flightNum}, ${name}` });
+//   },
+// };
+
+// lufthansa.book(4545, "Chris");
+// lufthansa.book(445545, "Rubie");
+// lufthansa.book(45, "BIKOY");
+// console.log(lufthansa);
+
+// const anotherbook = lufthansa.book;
+
+// const rb = {
+//   iataCode: "RB",
+//   airLine: "RUBIEBIKOY",
+//   bookings: [],
+// };
+
+// anotherbook.call(rb, 721, "RCB");
+// anotherbook.call(lufthansa, 851, "RCB");
+// console.log(lufthansa.bookings);
+
+// const bookCopy = anotherbook.bind(rb);
+// const bookCopy459 = anotherbook.bind(rb, 459);
+// const boooookkeer = anotherbook.bind(lufthansa, 855, "Lelouch");
+// boooookkeer();
+// bookCopy459("Lamperouge");
+// bookCopy(102568, "John Doe");
+
+// console.log(rb.bookings);
+
+// const functionHigher = function (value) {
+//   return function (rate) {
+//     rate = 0.23;
+//     return value + value * rate;
+//   };
+// };
+
+// console.log(functionHigher(100)(78));
+
+const poll = {
+  question: "What is your favourite programming language?",
+  options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
+  // This generates [0, 0, 0, 0]. More in the next section 😃
+  answers: new Array(4).fill(0),
+  registerNewAnswer() {
+    const [j, p, r, c] = [...this.options];
+    /* const [z, y, x, w] = [...this.answers]; */
+    const input = Number(
+      prompt(`${this.question}\n${j}\n${p}\n${r}\n${c}\n(Write option number)`)
     );
-    this.bookings.push({ flight: `${this.iataCode}${flightNum}, ${name}` });
+    for (let i = 0; i < this.answers.length; i++) {
+      if (input === i) {
+        this.answers[i]++;
+        break;
+      } else if (input !== 0 && input !== 1 && input !== 2 && input !== 3) {
+        document.location.reload();
+      }
+    }
+    console.log(poll.answers);
   },
 };
 
-lufthansa.book(4545, "Chris");
-lufthansa.book(445545, "Rubie");
-lufthansa.book(45, "BIKOY");
-console.log(lufthansa);
-
-const anotherbook = lufthansa.book;
-
-const rb = {
-  iataCode: "RB",
-  airLine: "RUBIEBIKOY",
-  bookings: [],
-};
-
-anotherbook.call(rb, 721, "RCB");
-anotherbook.call(lufthansa, 851, "RCB");
-console.log(lufthansa.bookings);
+const register = poll.registerNewAnswer;
+document.querySelector(".poll").addEventListener("click", register.bind(poll));
