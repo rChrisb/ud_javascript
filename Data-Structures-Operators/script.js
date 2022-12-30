@@ -230,47 +230,91 @@ const gameEvents = new Map([
 //   );
 // }
 
-const airline = "TAP Air Portugal",
-  plane = "A320";
+// const airline = "TAP Air Portugal",
+//   plane = "A320";
 
-console.log(airline.indexOf("P"));
-console.log(airline.lastIndexOf("P"));
-console.log(airline.indexOf("Portugal"));
+// console.log(airline.indexOf("P"));
+// console.log(airline.lastIndexOf("P"));
+// console.log(airline.indexOf("Portugal"));
 
-console.log(airline.slice("8"));
-console.log(airline.slice(8, 10).length);
-console.log(airline.slice(airline.lastIndexOf(" "), airline.length));
-console.log(
-  airline.slice(airline.lastIndexOf(" "), airline.length).toUpperCase()
-);
-console.log(airline.slice(airline.lastIndexOf(" ") + 1));
-console.log(airline.slice(-1));
+// console.log(airline.slice("8"));
+// console.log(airline.slice(8, 10).length);
+// console.log(airline.slice(airline.lastIndexOf(" "), airline.length));
+// console.log(
+//   airline.slice(airline.lastIndexOf(" "), airline.length).toUpperCase()
+// );
+// console.log(airline.slice(airline.lastIndexOf(" ") + 1));
+// console.log(airline.slice(-1));
 
-let ok = "nOtOk";
-ok = ok.toUpperCase();
-const tmp = ok.slice(1).toLowerCase();
-ok = ok[0] + tmp;
-console.log(ok);
-ok = "    ekjdke,YFEZJBFENNFREjdkejde  \n\n";
-console.log(ok);
-const okCorrect = ok.trim().toLowerCase();
-console.log(okCorrect);
+// let ok = "nOtOk";
+// ok = ok.toUpperCase();
+// const tmp = ok.slice(1).toLowerCase();
+// ok = ok[0] + tmp;
+// console.log(ok);
+// ok = "    ekjdke,YFEZJBFENNFREjdkejde  \n\n";
+// console.log(ok);
+// const okCorrect = ok.trim().toLowerCase();
+// console.log(okCorrect);
 
-const annoucement = "Hello my friend, how are you? ";
-console.log(
-  annoucement.replace("Hello", "Good afternoon").replace("?", " doing today?")
-);
+// const annoucement = "Hello my friend, how are you? ";
+// console.log(
+//   annoucement.replace("Hello", "Good afternoon").replace("?", " doing today?")
+// );
 
-console.log(annoucement.startsWith("Z"));
-console.log(annoucement.endsWith("?"));
-console.log(annoucement.includes("Hello"));
-console.log(annoucement.split(" "));
+// console.log(annoucement.startsWith("Z"));
+// console.log(annoucement.endsWith("?"));
+// console.log(annoucement.includes("Hello"));
+// console.log(annoucement.split(" "));
 
-const word = "coucou";
-console.log(word.replace(word[0], word[0].toUpperCase()));
+// const word = "coucou";
+// console.log(word.replace(word[0], word[0].toUpperCase()));
 
-const num = 123456789;
-const hide = String(num).slice(-4);
-console.log(hide.padStart(String(num).length, "+"));
+// const num = 123456789;
+// const hide = String(num).slice(-4);
+// console.log(hide.padStart(String(num).length, "+"));
 
-console.log(annoucement.repeat(3));
+// console.log(annoucement.repeat(3));
+
+// underscore_case;
+//  first_name;
+// Some_Variable;
+//   calculate_AGE;
+// delayed_departure;
+
+// document.body.append(document.createElement("textarea"));
+// document.body.append(document.createElement("button"));
+
+// document.querySelector("button").addEventListener("click", function () {
+//   const text = document.querySelector("textarea").value;
+
+//   const arr = text.split("\n");
+//   for (const [i, line] of arr.entries()) {
+//     const [first, second] = line.trim().toLowerCase().split("_");
+//     const secondCorrect = second.replace(second[0], second[0].toUpperCase());
+//     const almost = first + secondCorrect;
+//     console.log(`${almost.padEnd(20)} ${"$".repeat(i + 1)}`);
+//   }
+// });
+
+// const fun = function () {
+//   const
+// }
+
+const flights =
+  "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+
+const split = flights.split("+");
+console.log(split);
+for (const line of split) {
+  const [info1, info2, info3, info4] = line.split(";");
+  const new2 = info2.slice(0, 3).toUpperCase();
+  const new3 = info3.slice(0, 3).toUpperCase();
+  const new1 = info1.slice(1).replace("_", " ");
+  const new1Correct = new1.startsWith("Del") ? `!!! ${new1}` : `${new1}`;
+  const new4 = info4.replace(":", "h");
+
+  const output = `${new1Correct} from ${new2} to ${new3} (${new4})`;
+  console.log(`${output.padStart(45)}`);
+
+  /* console.log(info1, info2, info3, info4); */
+}
