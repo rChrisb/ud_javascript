@@ -135,6 +135,41 @@ const displayBalance = function (transactions) {
   labelBalance.textContent = `${balance}€`;
 };
 displayBalance(account1.movements);
+
+const displaySummary = function (transactions) {
+  const incomes = transactions
+    .filter(function (element) {
+      return element > 0;
+    })
+    .reduce(function (accumulator, element) {
+      return accumulator + element;
+    }, 0);
+  labelSumIn.textContent = `${incomes}€`;
+  const outcomes = transactions
+    .filter(function (element) {
+      return element < 0;
+    })
+    .reduce(function (accumulator, element) {
+      return accumulator + Math.abs(element);
+    }, 0);
+  labelSumOut.textContent = `${outcomes}€`;
+  const interest = transactions
+    .filter(function (element) {
+      return element > 0;
+    })
+    .map(function (element) {
+      return element * 0.012;
+    })
+    .filter(function (int) {
+      return int >= 1;
+    })
+    .reduce(function (accumulator, element) {
+      return accumulator + element;
+    }, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+displaySummary(account1.movements);
+
 // const transactions = [200, -200, 340, -300, -20, 50, 400, -460];
 // const double = transactions.map(function (element) {
 //   return element * 2;
@@ -149,23 +184,18 @@ displayBalance(account1.movements);
 // }, 1);
 // console.log(balance);
 
-let julia = [5, 2, 4, 1, 15, 8, 3];
-// [16,6,10,5,6,1,4]
+// let julia = [5, 2, 4, 1, 15, 8, 3];
+// // [16,6,10,5,6,1,4]
 
-const calcAverageHumanAge = function (ages) {
-  const humanAge = ages
-    .map(function (age) {
-      return age <= 2 ? 2 * age : 16 + age * 4;
-    })
-    .filter(function (age) {
-      return age >= 18;
-    })
-    .reduce(function (acc, age, index, array) {
-      return acc + age / array.length;
-    }, 0);
-  console.log(humanAge);
-};
+// const calcAverageHumanAge = (ages) => {
+//   const humanAge = ages
+//     .map((age) => (age <= 2 ? 2 * age : 16 + age * 4))
+//     .filter((age) => age >= 18)
+//     .reduce((acc, age, index, array) => acc + age / array.length, 0);
+//   console.log(humanAge);
+// };
 
-calcAverageHumanAge(julia);
-julia = [16, 6, 10, 5, 6, 1, 4];
-calcAverageHumanAge(julia);
+// calcAverageHumanAge(julia);
+// julia = [16, 6, 10, 5, 6, 1, 4];
+// calcAverageHumanAge(julia);
+console.log(accounts);
