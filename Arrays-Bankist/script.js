@@ -310,3 +310,9 @@ const transactions = [200, -200, 340, -300, -20, 50, 400, -460];
 //   return a - b;
 // });
 // console.log(arr2);
+const trans = [200, -200, 340, -300, -20, 50, 400, -460];
+trans.fill("ok", 1, 4);
+console.log(trans);
+
+const a = Array.from({ length: 10 }, (element, i) => i * 15);
+console.log(a);
