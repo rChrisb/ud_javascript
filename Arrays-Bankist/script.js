@@ -311,8 +311,70 @@ const transactions = [200, -200, 340, -300, -20, 50, 400, -460];
 // });
 // console.log(arr2);
 const trans = [200, -200, 340, -300, -20, 50, 400, -460];
-trans.fill("ok", 1, 4);
-console.log(trans);
+// trans.fill("ok", 1, 4);
+// console.log(trans);
 
-const a = Array.from({ length: 10 }, (element, i) => i * 15);
-console.log(a);
+// const a = Array.from({ length: 10 }, (element, i) => i * 15);
+// console.log(a);
+const dogs = [
+  { weight: 22, curFood: 250, owners: ["Alice", "Bob"] },
+  { weight: 8, curFood: 200, owners: ["Matilda"] },
+  { weight: 13, curFood: 275, owners: ["Sarah", "John"] },
+  { weight: 32, curFood: 340, owners: ["Michael"] },
+];
+
+const recommendedportion = dogs.map((dog) => {
+  dog.recommendedFood = dog.weight ** 0.75 * 28;
+});
+console.log(dogs);
+
+const sarah = dogs.find((dog) => dog.owners.includes("Sarah"));
+console.log(
+  sarah.curFood > sarah.recommendedFood
+    ? `Too much (` +
+        sarah.curFood +
+        ") vs recommended: " +
+        sarah.recommendedFood
+    : `Not enough (` +
+        sarah.curFood +
+        ") vs recommended: " +
+        sarah.recommendedFood
+);
+
+const ownersEatToomuch = dogs
+  .filter((dog) => dog.curFood > dog.recommendedFood)
+  .flatMap((dog) => dog.owners);
+console.log(ownersEatToomuch);
+const ownersEatTooLittle = dogs
+  .filter((dog) => dog.curFood < dog.recommendedFood)
+  .flatMap((dog) => dog.owners);
+console.log(ownersEatTooLittle);
+
+console.log(`${ownersEatTooLittle.join(" and ")}'s dogs eat too little`);
+console.log(`${ownersEatToomuch.join(" and ")}'s dogs eat too much`);
+
+const exactportion = dogs.some((dog) => dog.curFood === dog.recommendedFood);
+const okayportion = dogs.some(
+  (dog) =>
+    dog.curFood <= dog.recommendedFood * 1.1 &&
+    dog.curFood >= dog.recommendedFood * 0.9
+);
+const okaydogs = dogs.filter(
+  (dog) =>
+    dog.curFood <= dog.recommendedFood * 1.1 &&
+    dog.curFood >= dog.recommendedFood * 0.9
+);
+console.log(okayportion, okaydogs);
+
+if (exactportion)
+  console.log(
+    "There are dog(s) eating exactly their amount of recommended food"
+  );
+else console.log("NO dog eat exactly the amount of recommended food");
+
+if (okayportion)
+  console.log("There are dog(s) eating OKAY amount of recommended food");
+else console.log("There dogs eating  a BAD amount of recommended food");
+
+const copy = dogs.slice().sort((a, b) => a.recommendedFood - b.recommendedFood);
+console.log(copy);
