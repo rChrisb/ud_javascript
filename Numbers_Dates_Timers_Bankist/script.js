@@ -192,7 +192,7 @@ const day = String(now.getDate()).padStart(2, 0);
 const month = String(now.getMonth() + 1).padStart(2, 0);
 const year = now.getFullYear();
 const hour = now.getHours();
-const minutes = now.getMinutes();
+const minutes = String(now.getMinutes()).padEnd(2, 0);
 labelDate.textContent = `${day}/${month}/${year}, ${hour}:${minutes}`;
 
 btnLogin.addEventListener("click", function (event) {
@@ -228,6 +228,9 @@ btnTransfer.addEventListener("click", function (event) {
   ) {
     currentAccount.movements.push(-amount);
     receiverAccount.movements.push(amount);
+
+    currentAccount.movementsDates.push(new Date().toISOString());
+    receiverAccount.movementsDates.push(new Date().toISOString());
     updateUserInterface(currentAccount);
   }
 });
@@ -242,6 +245,7 @@ btnLoan.addEventListener("click", function (event) {
     currentAccount.movements.some((mov) => mov >= loanAmount * 0.1)
   ) {
     currentAccount.movements.push(loanAmount);
+    currentAccount.movementsDates.push(new Date().toISOString());
   }
   updateUserInterface(currentAccount);
 });
@@ -299,3 +303,12 @@ labelBalance.addEventListener("click", function () {
 
 // date.setFullYear(3022);
 // console.log(date);
+
+let date = new Date(2023, 0, 55, 25, 61, 61);
+console.log(+date);
+
+const daysPassed = (date1, date2) =>
+  Math.abs(date1 - date2) / (1000 * 60 * 60 * 24);
+
+console.log(daysPassed(date, new Date()));
+console.log(new Date(), date);
