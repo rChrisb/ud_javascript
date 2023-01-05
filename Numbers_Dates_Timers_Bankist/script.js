@@ -210,6 +210,21 @@ const updateUserInterface = function (account) {
   displaySummary(account);
 };
 
+const startLogOutTimer = function () {
+  let time = 600;
+
+  const timer = setInterval(function () {
+    const min = String(parseInt(time / 60)).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
+    labelTimer.textContent = `${min}:${sec}`;
+    time--;
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = "Log in get started";
+      containerApp.style.opacity = 0;
+    }
+  }, 1000);
+};
 let currentAccount;
 
 currentAccount = account1;
@@ -236,6 +251,8 @@ btnLogin.addEventListener("click", function (event) {
     }`;
     inputLoginUsername.value = inputLoginPin.value = "";
     inputLoginPin.blur();
+
+    startLogOutTimer();
     updateUserInterface(currentAccount);
   }
 });
@@ -356,6 +373,15 @@ labelBalance.addEventListener("click", function () {
 
 // ---------TIMERS----------------------
 
-setTimeout(() => {
-  console.log("Here is you Pizza");
-}, 3000);
+// setTimeout(() => {
+//   clock;
+// }, 5000);
+
+// const clock = setInterval(() => {
+//   const now = new Date();
+//   console.log(
+//     `${now.getHours()}:${String(now.getMinutes()).padStart(2, 0)}:${String(
+//       now.getSeconds()
+//     ).padStart(2, 0)}`
+//   );
+// }, 2000);
