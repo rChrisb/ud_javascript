@@ -210,31 +210,30 @@ const updateUserInterface = function (account) {
   displaySummary(account);
 };
 
-let time = 10;
 const startLogOutTimer = function () {
   const tick = function () {
     const min = String(parseInt(time / 60)).padStart(2, 0);
     const sec = String(time % 60).padStart(2, 0);
     labelTimer.textContent = `${min}:${sec}`;
     time--;
-    if (time === -1) {
+    if (time === 0) {
       clearInterval(timer);
-      setTimeout(function () {
-        labelWelcome.textContent = "Log in get started";
-        containerApp.style.opacity = 0;
-      }, 1000);
+
+      labelWelcome.textContent = "Log in get started";
+      containerApp.style.opacity = 0;
     }
   };
-
+  let time = 600;
+  tick();
   const timer = setInterval(tick, 1000);
   return timer;
 };
 
 let currentAccount, timer;
 
-currentAccount = account1;
-updateUserInterface(currentAccount);
-containerApp.style.opacity = 100;
+// currentAccount = account1;
+// updateUserInterface(currentAccount);
+// containerApp.style.opacity = 100;
 
 const now = new Date();
 const day = String(now.getDate()).padStart(2, 0);
@@ -283,6 +282,9 @@ btnTransfer.addEventListener("click", function (event) {
 
     currentAccount.movementsDates.push(new Date().toISOString());
     receiverAccount.movementsDates.push(new Date().toISOString());
+
+    clearInterval(timer);
+    timer = startLogOutTimer();
     updateUserInterface(currentAccount);
   }
 });
@@ -302,6 +304,8 @@ btnLoan.addEventListener("click", function (event) {
       updateUserInterface(currentAccount);
     }, 2500);
   }
+  clearInterval(timer);
+  timer = startLogOutTimer();
 });
 
 btnClose.addEventListener("click", function (e) {
