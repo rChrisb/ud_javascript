@@ -100,6 +100,13 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
+const formatCurrency = function (value, locale, currency) {
+  return new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: currency,
+  }).format(value);
+};
+
 const displayTransaction = function (account, sort = false) {
   containerMovements.innerHTML = "";
 
@@ -114,11 +121,17 @@ const displayTransaction = function (account, sort = false) {
     const month = `${date.getMonth() + 1}`.padStart(2, 0);
     const year = date.getFullYear();
 
+    const formatMovements = formatCurrency(
+      act,
+      account.locale,
+      account.currency
+    );
+
     const displayDate = `${day}/${month}/${year}`;
     const html = `<div class="movements__row">
 		  <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
 		  <div class="movements__date">${displayDate}</div>
-		  <div class="movements__value">${act.toFixed(2)}€</div>
+		  <div class="movements__value">${formatMovements}</div>
 		</div>`;
     containerMovements.insertAdjacentHTML("afterbegin", html);
   });
@@ -129,7 +142,11 @@ const displayBalance = function (account) {
     return accumulator + element;
   }, 0);
 
-  labelBalance.textContent = `${account.balance.toFixed(2)}€`;
+  labelBalance.textContent = `${formatCurrency(
+    account.balance,
+    account.locale,
+    account.currency
+  )};`;
 };
 
 const displaySummary = function (account) {
@@ -140,7 +157,11 @@ const displaySummary = function (account) {
     .reduce(function (accumulator, element) {
       return accumulator + element;
     }, 0);
-  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
+  labelSumIn.textContent = `${formatCurrency(
+    incomes,
+    account.locale,
+    account.currency
+  )};`;
   const outcomes = account.movements
     .filter(function (element) {
       return element < 0;
@@ -148,7 +169,11 @@ const displaySummary = function (account) {
     .reduce(function (accumulator, element) {
       return accumulator + Math.abs(element);
     }, 0);
-  labelSumOut.textContent = `${outcomes.toFixed(2)}€`;
+  labelSumOut.textContent = `${formatCurrency(
+    outcomes,
+    account.locale,
+    account.currency
+  )};`;
   const interest = account.movements
     .filter(function (element) {
       return element > 0;
@@ -162,7 +187,11 @@ const displaySummary = function (account) {
     .reduce(function (accumulator, element) {
       return accumulator + element;
     }, 0);
-  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
+  labelSumInterest.textContent = `${formatCurrency(
+    interest,
+    account.locale,
+    account.currency
+  )};`;
 };
 
 const createUserName = function (accs) {
@@ -244,10 +273,12 @@ btnLoan.addEventListener("click", function (event) {
     loanAmount > 0 &&
     currentAccount.movements.some((mov) => mov >= loanAmount * 0.1)
   ) {
-    currentAccount.movements.push(loanAmount);
-    currentAccount.movementsDates.push(new Date().toISOString());
+    setTimeout(() => {
+      currentAccount.movements.push(loanAmount);
+      currentAccount.movementsDates.push(new Date().toISOString());
+      updateUserInterface(currentAccount);
+    }, 2500);
   }
-  updateUserInterface(currentAccount);
 });
 
 btnClose.addEventListener("click", function (e) {
@@ -304,11 +335,27 @@ labelBalance.addEventListener("click", function () {
 // date.setFullYear(3022);
 // console.log(date);
 
-let date = new Date(2023, 0, 55, 25, 61, 61);
-console.log(+date);
+// let date = new Date(2023, 0, 55, 25, 61, 61);
+// console.log(+date);
 
-const daysPassed = (date1, date2) =>
-  Math.abs(date1 - date2) / (1000 * 60 * 60 * 24);
+// const daysPassed = (date1, date2) =>
+//   Math.abs(date1 - date2) / (1000 * 60 * 60 * 24);
 
-console.log(daysPassed(date, new Date()));
-console.log(new Date(), date);
+// console.log(daysPassed(date, new Date()));
+// console.log(new Date(), date);
+
+// const n = 21541222.5;
+
+// const op = {
+//   style: "currency",
+//   currency: "EUR",
+// };
+// console.log(new Intl.NumberFormat("en-US", op).format(n));
+// console.log(new Intl.NumberFormat("fr-FR", op).format(n));
+// console.log(navigator.language);
+
+// ---------TIMERS----------------------
+
+setTimeout(() => {
+  console.log("Here is you Pizza");
+}, 3000);
