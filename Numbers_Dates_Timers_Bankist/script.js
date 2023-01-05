@@ -210,22 +210,27 @@ const updateUserInterface = function (account) {
   displaySummary(account);
 };
 
+let time = 10;
 const startLogOutTimer = function () {
-  let time = 600;
-
-  const timer = setInterval(function () {
+  const tick = function () {
     const min = String(parseInt(time / 60)).padStart(2, 0);
     const sec = String(time % 60).padStart(2, 0);
     labelTimer.textContent = `${min}:${sec}`;
     time--;
-    if (time === 0) {
+    if (time === -1) {
       clearInterval(timer);
-      labelWelcome.textContent = "Log in get started";
-      containerApp.style.opacity = 0;
+      setTimeout(function () {
+        labelWelcome.textContent = "Log in get started";
+        containerApp.style.opacity = 0;
+      }, 1000);
     }
-  }, 1000);
+  };
+
+  const timer = setInterval(tick, 1000);
+  return timer;
 };
-let currentAccount;
+
+let currentAccount, timer;
 
 currentAccount = account1;
 updateUserInterface(currentAccount);
@@ -252,7 +257,8 @@ btnLogin.addEventListener("click", function (event) {
     inputLoginUsername.value = inputLoginPin.value = "";
     inputLoginPin.blur();
 
-    startLogOutTimer();
+    if (timer) clearInterval(timer);
+    timer = startLogOutTimer();
     updateUserInterface(currentAccount);
   }
 });
