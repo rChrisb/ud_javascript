@@ -11,6 +11,11 @@ const nav = document.querySelector(".nav");
 const btnScrollTo = document.querySelector(".btn--scroll-to");
 const section1 = document.querySelector("#section--1");
 
+btnScrollTo.addEventListener("click", function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+  section1.scrollIntoView({ behavior: "smooth" });
+});
 const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove("hidden");
@@ -125,33 +130,81 @@ const sectionObserver = new IntersectionObserver(revealSection, {
 });
 allSections.forEach(function (section) {
   sectionObserver.observe(section);
-  section.classList.add("section--hidden");
+  /* section.classList.add("section--hidden"); */
+});
+
+const imgTargets = document.querySelectorAll("img[data-src]");
+const loadImg = function (entries, observer) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+
+  entry.target.src = entry.target.dataset.src;
+
+  entry.target.addEventListener("load", function () {
+    entry.target.classList.remove("lazy-img");
+  });
+  observer.unobserve(entry.target);
+};
+
+const imgObserver = new IntersectionObserver(loadImg, {
+  root: null,
+  threshold: 0,
+});
+
+imgTargets.forEach((img) => imgObserver.observe(img));
+
+// Slider
+const slides = document.querySelectorAll(".slide");
+const btnLeft = document.querySelector(".slider__btn--left");
+const btnRight = document.querySelector(".slider__btn--right");
+let currentSlide = 0;
+const numberOfSlides = slides.length;
+
+const slider = document.querySelector(".slider");
+
+slider.style.overflow = "visible";
+
+const goToSlide = function (slide) {
+  slides.forEach(
+    (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+  );
+};
+goToSlide(0);
+
+btnRight.addEventListener("click", function () {
+  if (currentSlide === numberOfSlides - 1) {
+    currentSlide = 0;
+  } else currentSlide++;
+
+  goToSlide(currentSlide);
+});
+btnLeft.addEventListener("click", function () {
+  if (currentSlide === 0) {
+    currentSlide = numberOfSlides - 1;
+  } else currentSlide--;
+
+  goToSlide(currentSlide);
 });
 
 // const message = document.createElement("div");
 // message.classList.add("cookie-message");
 // const header = document.querySelector(".header");
 // message.innerHTML =
-//   'Cookie <button class= "btn btn--close-cookie"> Yeup!</button>';
+// 'Cookie <button class= "btn btn--close-cookie"> Yeup!</button>';
 // header.append(message);
 // message.style.width = "120%";
 
-btnScrollTo.addEventListener("click", function (e) {
-  const s1coords = section1.getBoundingClientRect();
-  console.log(s1coords);
-
-  /*  window.scrollTo({
+/*  window.scrollTo({
     left: s1coords.left + window.pageXOffset,
     top: s1coords.top + window.pageYOffset,
     behavior: "smooth",
   }); */
-  section1.scrollIntoView({ behavior: "smooth" });
-});
 
-const randomInt = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1) + min);
-const randomColor = () =>
-  `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
 // console.log(randomColor());
 
 /* document.querySelector(".nav__link").addEventListener("click", function (e) {
