@@ -64,18 +64,48 @@
 // peugeot.brake();
 // peugeot.brake();
 
-class Player {
-  constructor(name, team, number) {
-    this.name = name;
-    this.team = team;
-    this.number = number;
-  }
+// class Player {
+//   constructor(name, team, number) {
+//     this.name = name;
+//     this.team = team;
+//     this.number = number;
+//   }
 
-  information() {
-    console.log(`${this.name} plays for ${this.team} and wears ${this.number}`);
+//   information() {
+//     console.log(`${this.name} plays for ${this.team} and wears ${this.number}`);
+//   }
+// }
+
+// const neymar = new Player("Neymar", "PSG", 10);
+// console.log(neymar);
+// neymar.information();
+
+class Car {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make}'s speed has been increased to ${this.speed}`);
+  }
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make}'s speed has been decreased to ${this.speed}`);
+  }
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
   }
 }
 
-const neymar = new Player("Neymar", "PSG", 10);
-console.log(neymar);
-neymar.information();
+const mercedes = new Car("Mercedes", 95);
+const bmw = new Car("BMW", 120);
+
+// bmw.speedUS = 46;
+// console.log(bmw.speed);
+console.log(bmw.speed, bmw.speedUS);
+bmw.speedUS = 100;
+console.log(bmw.speed);
