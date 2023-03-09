@@ -179,42 +179,69 @@
 // console.log(testla);
 // testla.accelerate();
 
-class Car {
-  constructor(make, speed) {
-    this.make = make;
-    this.speed = speed;
-  }
-  accelerate() {
-    this.speed += 10;
-    console.log(`${this.make}'s speed has been increased to ${this.speed}`);
-  }
-  brake() {
-    this.speed -= 5;
-    console.log(`${this.make}'s speed has been decreased to ${this.speed}`);
-  }
-  get speedUS() {
-    return this.speed / 1.6;
-  }
-  set speedUS(speed) {
-    this.speed = speed * 1.6;
-  }
-}
+// class Car {
+//   constructor(make, speed) {
+//     this.make = make;
+//     this.speed = speed;
+//   }
+//   accelerate() {
+//     this.speed += 10;
+//     console.log(`${this.make}'s speed has been increased to ${this.speed}`);
+//   }
+//   brake() {
+//     this.speed -= 5;
+//     console.log(`${this.make}'s speed has been decreased to ${this.speed}`);
+//   }
+//   get speedUS() {
+//     return this.speed / 1.6;
+//   }
+//   set speedUS(speed) {
+//     this.speed = speed * 1.6;
+//   }
+// }
 
-class EV extends Car {
-  constructor(make, speed, charge) {
-    super(make, speed);
-    this.charge = charge;
-  }
-  accelerate() {
-    this.speed += 20;
-    this.charge--;
-    console.log(
-      `${this.make}: current speed is ${this.speed} | current battery is ${this.charge}`
-    );
-  }
-}
-const tesla = new EV("Tesla", 120, 99);
-tesla.accelerate();
-console.log(tesla.speedUS);
-tesla.speedUS = 111;
-console.log(tesla);
+// class EV extends Car {
+//   constructor(make, speed, charge) {
+//     super(make, speed);
+//     this.charge = charge;
+//   }
+//   accelerate() {
+//     this.speed += 20;
+//     this.charge--;
+//     console.log(
+//       `${this.make}: current speed is ${this.speed} | current battery is ${this.charge}`
+//     );
+//   }
+// }
+// const tesla = new EV("Tesla", 120, 99);
+// tesla.accelerate();
+// console.log(tesla.speedUS);
+// tesla.speedUS = 111;
+// console.log(tesla);
+
+const PersonProto = {
+  calcAge() {
+    console.log(`${2023 - this.birthYear}`);
+  },
+
+  init(firstname, birthYear) {
+    this.firstname = firstname;
+    this.birthYear = birthYear;
+  },
+};
+
+const chris = Object.create(PersonProto);
+chris.birthYear = 1997;
+chris.calcAge();
+
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function (firstname, birthYear, favouriteCourse) {
+  PersonProto.init.call(this, firstname, birthYear);
+  this.favouriteCourse = favouriteCourse;
+};
+
+const bikoy = Object.create(StudentProto);
+bikoy.init("chris", 2000, "Maths");
+bikoy.favouriteCourse = "Programming";
+console.log(bikoy);
+bikoy.calcAge();
