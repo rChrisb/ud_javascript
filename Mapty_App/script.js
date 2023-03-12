@@ -11,6 +11,9 @@ const inputDuration = document.querySelector(".form__input--duration");
 const inputCadence = document.querySelector(".form__input--cadence");
 const inputElevation = document.querySelector(".form__input--elevation");
 
+let map;
+let mapEvent;
+
 if (navigator.geolocation)
   navigator.geolocation.getCurrentPosition(
     function (position) {
@@ -18,15 +21,19 @@ if (navigator.geolocation)
       console.log(`https://www.google.fr/maps/@${latitude},${longitude}`);
       const coords = [latitude, longitude];
 
-      const map = L.map("map").setView(coords, 13);
+      map = L.map("map").setView(coords, 13);
 
       L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
 
-      map.on("click", function (mapEvent) {
-        const { lat, lng } = mapEvent.latlng;
+      map.on("click", function (mapE) {
+        mapEvent = mapE;
+
+        form.classList.remove("hidden");
+        inputDistance.focus();
+        /* const { lat, lng } = mapEvent.latlng;
         L.marker([lat, lng])
           .addTo(map)
           .bindPopup(
@@ -39,10 +46,41 @@ if (navigator.geolocation)
             })
           )
           .setPopupContent("Workout")
-          .openPopup();
+          .openPopup(); */
       });
     },
     function () {
       alert("Can't find your position...");
     }
   );
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  inputCadence.value =
+    inputDistance.value =
+    inputDuration.value =
+    inputElevation.value =
+      "";
+
+  //Display Marker Pop Up
+  const { lat, lng } = mapEvent.latlng;
+  L.marker([lat, lng])
+    .addTo(map)
+    .bindPopup(
+      L.popup({
+        maxWidth: 250,
+        minWidth: 250,
+        autoClose: false,
+        closeOnClick: false,
+        className: "running-popup",
+      })
+    )
+    .setPopupContent("Workout")
+    .openPopup();
+});
+
+inputType.addEventListener("change", function () {
+  inputElevation.closest(".form__row").classList.toggle("form__row--hidden");
+  inputCadence.closest(".form__row").classList.toggle("form__row--hidden");
+});
