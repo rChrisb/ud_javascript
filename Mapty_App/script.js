@@ -1,5 +1,6 @@
 "use strict";
-
+// prettier-ignore
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 class Workout {
   date = new Date();
   id = (Date.now() + "").slice(-10);
@@ -179,7 +180,9 @@ class App {
         })
       )
       .setPopupContent(
-        `${workout.name[0].toUpperCase() + workout.name.slice(1)}`
+        `${workout.name[0].toUpperCase() + workout.name.slice(1)} on ${
+          months[workout.date.getMonth()]
+        } ${workout.date.getDate()}`
       )
       .openPopup();
   }
