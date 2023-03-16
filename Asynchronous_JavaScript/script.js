@@ -62,34 +62,55 @@ const renderCountry = function (data, classname = "") {
   countriesContainer.style.opacity = 1;
 };
 
-const getCountryAndNeighbour = function (country) {
-  // AJAX call for the first country
-  const request = new XMLHttpRequest();
-  request.open("GET", `https://restcountries.com/v3.1/name/${country}`);
-  request.send();
+// const getCountryAndNeighbour = function (country) {
+//   // AJAX call for the first country
+//   const request = new XMLHttpRequest();
+//   request.open("GET", `https://restcountries.com/v3.1/name/${country}`);
+//   request.send();
 
-  request.addEventListener("load", function () {
-    const [data] = JSON.parse(this.responseText); // when doing destructuring with [] its like doing [0] of an array
-    console.log(data);
+//   request.addEventListener("load", function () {
+//     const [data] = JSON.parse(this.responseText); // when doing destructuring with [] its like doing [0] of an array
+//     console.log(data);
 
-    // Render the first country
-    renderCountry(data);
+//     // Render the first country
+//     renderCountry(data);
 
-    const neighbour = data.borders?.[0];
+//     const neighbour = data.borders?.[0];
 
-    // Call AJAX neighbour country
-    const request2 = new XMLHttpRequest();
-    request2.open("GET", `https://restcountries.com/v3.1/alpha/${neighbour}`);
-    request2.send();
-    request2.addEventListener("load", function () {
-      const [neighbour] = JSON.parse(this.responseText);
-      console.log(neighbour);
-      renderCountry(neighbour, "neighbour");
-    });
+//     // Call AJAX neighbour country
+//     const request2 = new XMLHttpRequest();
+//     request2.open("GET", `https://restcountries.com/v3.1/alpha/${neighbour}`);
+//     request2.send();
+//     request2.addEventListener("load", function () {
+//       const [neighbour] = JSON.parse(this.responseText);
+//       console.log(neighbour);
+//       renderCountry(neighbour, "neighbour");
+//     });
 
-    //Get neighbour country
-  });
+//     //Get neighbour country
+//   });
+// };
+
+// getCountryAndNeighbour("usa");
+
+// const request = new XMLHttpRequest();
+//   request.open("GET", `https://restcountries.com/v3.1/name/${country}`);
+//   request.send();
+
+// const getCountryData = function (country) {
+//   fetch(`https://restcountries.com/v3.1/name/${country}`)
+//     .then(function (response) {
+//       console.log(response);
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       console.log(data);
+//       renderCountry(data[0]);
+//     });
+// };
+const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v3.1/name/${country}`)
+    .then((response) => response.json())
+    .then((data) => renderCountry(data[0]));
 };
-
-getCountryAndNeighbour("usa");
-getCountryAndNeighbour("cameroon");
+getCountryData("cameroon");
