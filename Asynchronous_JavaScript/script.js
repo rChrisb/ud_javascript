@@ -59,7 +59,12 @@ const renderCountry = function (data, classname = "") {
   </div>
 </article>`;
   countriesContainer.insertAdjacentHTML("beforeend", html);
-  countriesContainer.style.opacity = 1;
+  /* countriesContainer.style.opacity = 1; */
+};
+
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText("beforeend", msg);
+  /* countriesContainer.style.opacity = 1; */
 };
 
 // const getCountryAndNeighbour = function (country) {
@@ -108,6 +113,7 @@ const renderCountry = function (data, classname = "") {
 //       renderCountry(data[0]);
 //     });
 // };
+
 const getCountryData = function (country) {
   fetch(`https://restcountries.com/v3.1/name/${country}`)
     .then((response) => response.json())
@@ -117,6 +123,14 @@ const getCountryData = function (country) {
       return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
     })
     .then((response) => response.json())
-    .then((data) => renderCountry(data[0], "neighbour"));
+    .then((data) => renderCountry(data[0], "neighbour"))
+    .catch((err) => {
+      console.error(`${err} :(`);
+      renderError(`yoo sum went left broda: ${err.message}`);
+    })
+    .finally(() => (countriesContainer.style.opacity = 1));
 };
-getCountryData("norway");
+
+btn.addEventListener("click", function () {
+  getCountryData("cafre");
+});
